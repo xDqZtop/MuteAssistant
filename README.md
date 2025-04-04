@@ -22,5 +22,4 @@ mute | /mute | muteassistant.command.mute | Main command that opens the main UI
 Version | Information | Date | Api
 ------- | ----------- | ---- | ---
 1.0.0 | First version | 21 Jul 2021 | 3.0.0->3.22.0
-------- | ----------- | ---- | ---
 1.0.1 | Convert version | 4 April 2025 | 5.x.x
