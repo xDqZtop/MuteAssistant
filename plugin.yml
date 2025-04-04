@@ -1,13 +1,17 @@
 ---
 name: MuteAssistant
-description: Mute players as easy as you can with MuteAssistant
+description: Mute players as easy as you can with MuteAssistant (convert By xDqZtop)
 version: 1.0.0
 main: muteassistant\Main
-api: [3.0.0, 4.0.0]
+api: 5.0.0
 author: DANIHEX
 
 commands:
   mute:
     description: "Mute assistant menu"
     usage: "/mute [NoMoreArgs]"
+    permission: muteassistant.command.mute
+permissions:
+  muteassistant.command.mute:
+    default: false
 ...

@@ -4,10 +4,12 @@ declare(strict_types = 1);
 
 namespace muteassistant\lib\jojoe77777\FormAPI;
 
+use pocketmine\form\FormValidationException;
+
 class ModalForm extends Form {
 
     /** @var string */
-    private $content = "";
+    private string $content = "";
 
     /**
      * @param callable|null $callable
@@ -21,11 +23,27 @@ class ModalForm extends Form {
         $this->data["button2"] = "";
     }
 
+    // The error related to the "Esc" key has been fixed
+
+    public function processData(&$data): void
+    {
+        if ($data === null) {
+            $data = null;
+            return;
+        }
+
+        if (!is_bool($data)) {
+            throw new FormValidationException("Expected an integer response, got " . gettype($data));
+        }
+    }
+
     /**
      * @param string $title
+     * @return $this
      */
-    public function setTitle(string $title) : void {
+    public function setTitle(string $title) : self {
         $this->data["title"] = $title;
+        return $this;
     }
 
     /**
@@ -44,16 +62,20 @@ class ModalForm extends Form {
 
     /**
      * @param string $content
+     * @return $this
      */
-    public function setContent(string $content) : void {
+    public function setContent(string $content) : self {
         $this->data["content"] = $content;
+        return $this;
     }
 
     /**
      * @param string $text
+     * @return $this
      */
-    public function setButton1(string $text) : void {
+    public function setButton1(string $text) : self {
         $this->data["button1"] = $text;
+        return $this;
     }
 
     /**
@@ -65,9 +87,11 @@ class ModalForm extends Form {
 
     /**
      * @param string $text
+     * @return $this
      */
-    public function setButton2(string $text) : void {
+    public function setButton2(string $text) : self {
         $this->data["button2"] = $text;
+        return $this;
     }
 
     /**
